@@ -1,0 +1,38 @@
+{
+    "name": "bodakyuriy/ipstore",
+    "description": "IP Storage",
+    "keywords": [
+        "ip",
+        "storage"
+    ],
+    "homepage": "https://github.com/BodakYura/ipstorage",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bodak Yuriy",
+            "email": "bodakyura@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php" : ">=7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit" : "4.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "IPStore\\IPStore\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "IPStore\\IPStore\\Test\\": "tests"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
