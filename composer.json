@@ -16,7 +16,6 @@
     ],
     "require": {
         "php" : ">=7.0",
-        "doctrine/orm": "2.4.*"
     },
     "require-dev": {
         "phpunit/phpunit" : "4.*"
@@ -31,9 +30,4 @@
             "IPStorage\\Test\\": "tests"
         }
     },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.1-dev"
-        }
-    }
 }
