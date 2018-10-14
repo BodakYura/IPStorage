@@ -1,20 +1,25 @@
 <?php
 
-namespace IPStorage\Drivers\DoctrineDriver;
+namespace IPStorage\Drivers\PDODriver;
 
-use Doctrine\DBAL\DriverManager;
-use Doctrine\DBAL\Configuration;
+use IPStorage\StorageDriverInterface;
 
-class DoctrineDriver
+class PDODriver implements StorageDriverInterface
 {
     private $connection;
 
-    public function __construct()
+    public function __construct($dsn, $username, $passwd)
     {
-        $config = new Configuration();
-        $connectionParams = array(
-            'url' => 'mysql://user:secret@localhost/mydb',
-        );
-        $this->connection = DriverManager::getConnection($connectionParams, $config);
+        $this->connection = new \PDO($dsn, $username, $passwd);
+    }
+
+    public function save(string $ip): bool
+    {
+        // TODO: Implement save() method.
+    }
+
+    public function getCount(string $ip): int
+    {
+        // TODO: Implement getCount() method.
     }
 }
