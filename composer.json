@@ -15,19 +15,20 @@
         }
     ],
     "require": {
-        "php" : ">=7.0"
+        "php" : ">=7.0",
+        "doctrine/orm": "2.4.*"
     },
     "require-dev": {
         "phpunit/phpunit" : "4.*"
     },
     "autoload": {
         "psr-4": {
-            "IPStore\\IPStore\\": "src"
+            "IPStorage\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "IPStore\\IPStore\\Test\\": "tests"
+            "IPStorage\\Test\\": "tests"
         }
     },
     "extra": {
