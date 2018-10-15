@@ -62,7 +62,7 @@ class IPStorage implements IPStorageInterface
         if (count($errors) === 0) {
             $this->driver->save($ip);
 
-            return ['count' => $this->getCount($ip)];
+            return ['count' => $this->driver->getCount($ip)];
         }
 
         return ['errors' => $errors];
