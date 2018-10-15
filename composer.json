@@ -1,5 +1,5 @@
 {
-    "name": "bodakyuriy/ipstore",
+    "name": "bodakyuriy/ipstorage",
     "description": "IP Storage",
     "keywords": [
         "ip",
@@ -19,16 +19,17 @@
         "php" : ">=7.0"
     },
     "require-dev": {
-        "phpunit/phpunit" : "4.*"
+        "phpunit/phpunit": "^7"
     },
     "autoload": {
         "psr-4": {
-            "IPStorage\\": "src/"
+            "IPStorage\\": ""
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "IPStorage\\Test\\": "tests"
+            "IPStorage\\Test\\": "tests/"
         }
-    }
+    },
+    "minimum-stability": "dev"
 }

@@ -2,20 +2,20 @@
 
 namespace IPStorage;
 
+use IPStorage\Drivers\StorageDriverInterface;
+use IPStorage\Validator\Validator;
+use IPStorage\Validator\ValidatorInterface;
+
 /**
  * Class IPStorage
  * @package IPStorage
  */
-class IPStorage
+class IPStorage implements IPStorageInterface
 {
     /**
-     * @var array
+     * @var StorageDriverInterface
      */
-    private $drivers = [];
-    /**
-     * @var
-     */
-    private $defaultDriver;
+    private $driver;
     /**
      * @var Validator
      */
@@ -26,53 +26,25 @@ class IPStorage
      */
     public function __construct()
     {
-        $this->validator = new Validator();
+        $this->validator(new Validator());
     }
 
     /**
-     * @param string $key
      * @param StorageDriverInterface $storageDriver
      * @return $this
      */
-    public function addStorageDriver(string $key, StorageDriverInterface $storageDriver)
+    public function driver(StorageDriverInterface $storageDriver): self
     {
-        $this->drivers[$key] = $storageDriver;
+        $this->driver = $storageDriver;
 
         return $this;
-    }
-
-    /**
-     * @param string $driver
-     * @return IPStorage
-     */
-    public function setStorageDriver(string $driver) : self
-    {
-        $this->defaultDriver = $driver;
-
-        return $this;
-    }
-
-    /**
-     * @return StorageDriverInterface
-     */
-    public function getStorageDriver(): StorageDriverInterface
-    {
-        return $this->drivers[$this->defaultDriver];
-    }
-
-    /**
-     * @return array
-     */
-    public function getAvailableDrives(): array
-    {
-        return array_keys($this->drivers);
     }
 
     /**
      * @param ValidatorInterface $validator
      * @return IPStorage
      */
-    public function setValidator(ValidatorInterface $validator) : self
+    public function validator(ValidatorInterface $validator): self
     {
         $this->validator = $validator;
 
@@ -81,17 +53,19 @@ class IPStorage
 
     /**
      * @param string $ip
-     * @return int
+     * @return array|int
      */
-    public function add(string $ip): int
+    public function add(string $ip)
     {
-        $isValid = $this->validator->validate($ip);
+        $errors = $this->validator->validate($ip);
 
-        if ($isValid) {
-            $this->getStorageDriver()->save($ip);
+        if (count($errors) === 0) {
+            $this->driver->save($ip);
+        } else {
+            return ['errors' => $errors];
         }
 
-        return $this->getStorageDriver()->getCount($ip);
+        return $this->getCount($ip);
     }
 
     /**
@@ -100,7 +74,7 @@ class IPStorage
      */
     public function getCount(string $ip): int
     {
-        return $this->getStorageDriver()->getCount($ip);
+        return $this->driver->getCount($ip);
     }
 
 }
