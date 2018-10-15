@@ -10,9 +10,9 @@ interface IPStorageInterface
 {
     /**
      * @param string $ip
-     * @return int
+     * @return array
      */
-    public function add(string $ip);
+    public function add(string $ip): array;
 
     /**
      * @param string $ip

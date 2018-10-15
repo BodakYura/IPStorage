@@ -55,7 +55,7 @@ class IPStorage implements IPStorageInterface
      * @param string $ip
      * @return array|int
      */
-    public function add(string $ip)
+    public function add(string $ip): array
     {
         $errors = $this->validator->validate($ip);
 
@@ -65,7 +65,7 @@ class IPStorage implements IPStorageInterface
             return ['errors' => $errors];
         }
 
-        return $this->getCount($ip);
+        return ['count' => $this->getCount($ip)];
     }
 
     /**
