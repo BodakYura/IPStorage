@@ -97,24 +97,19 @@ class PDODriver implements StorageDriverInterface
     }
 
     /**
-     *
+     * @return bool
      */
     private function createIPStoreTable(): bool
     {
         return $this->connection->exec(
             "BEGIN;
                        CREATE TABLE IF NOT EXISTS $this->tableName (
-                          id INTEGER PRIMARY KEY,  
-                          ip VARCHAR (39), 
+                          id INTEGER PRIMARY KEY AUTOINCREMENT,  
+                          ip VARCHAR (39) UNIQUE, 
                           count INTEGER DEFAULT 1
                        );
-                       CREATE UNIQUE INDEX idx_ip ON $this->tableName (ip);
+                       CREATE UNIQUE INDEX IF NOT EXISTS idx_ip ON $this->tableName (ip);
                        COMMIT;"
         );
     }
-
-//    private function dropDB()
-//    {
-//        $this->connection->query("DROP TABLE ip_store")->execute();
-//    }
 }
