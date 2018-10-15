@@ -31,5 +31,5 @@
             "IPStorage\\Test\\": "tests/"
         }
     },
-    "minimum-stability": "dev-develop"
+    "minimum-stability": "dev"
 }
