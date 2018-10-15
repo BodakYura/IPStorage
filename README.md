@@ -1,4 +1,4 @@
-# IPStore
+# IPStorage
 
 Small flexible library for stored ip address.
 
@@ -7,13 +7,13 @@ Small flexible library for stored ip address.
 Via Composer
 
 ``` bash
-$ composer require bodakyuriy/ipstorage
+$ composer require bodakyuriy/ipstorage:dev-develop
 ```
 
 ## Documentation
 
-####Basic usage of `ipstorage` client
-
+#### Basic usage of `ipstorage` client
+```php
     use IPStorage\IPStorage;
     use IPStorage\Drivers\PDODriver\Driver\PDODriver;
     
@@ -34,9 +34,9 @@ $ composer require bodakyuriy/ipstorage
     
     //Return count of stored 
     $ipStorage->getCount('127.0.0.1');
-    
-####Optionally usage of `ipstorage` client
-    
+```    
+#### Optionally usage of `ipstorage` client
+```php    
     use IPStorage\IPStorage;
     use IPStorage\Drivers\PDODriver\Driver\PDODriver;
         
@@ -47,8 +47,8 @@ $ composer require bodakyuriy/ipstorage
      * Library use default ip validator but you can replace it your own validator which implemens ValidatorInteraface
      */
      $ipStorage->validator($validator);
+```
 
-#
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
