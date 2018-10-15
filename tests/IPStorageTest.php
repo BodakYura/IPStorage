@@ -4,7 +4,6 @@ namespace IPStorage\Test;
 
 use IPStorage\Drivers\StorageDriverInterface;
 use IPStorage\IPStorage;
-use IPStorage\Validator\Validator;
 use IPStorage\Validator\ValidatorInterface;
 use PHPUnit\Framework\Constraint\IsType;
 use PHPUnit\Framework\TestCase;
@@ -49,6 +48,26 @@ class IPStorageTest extends TestCase
         $this->assertInstanceOf(IPStorage::class, $result);
     }
 
+    public function testAdd()
+    {
+        $this->storage->driver(new class() implements StorageDriverInterface
+        {
+            public function save(string $ip): bool
+            {
+                return true;
+            }
+
+            public function getCount(string $ip): int
+            {
+                return 1;
+            }
+        });
+
+        $result = $this->storage->add('192.168.1.1');
+
+        $this->assertInternalType(IsType::TYPE_ARRAY, $result);
+    }
+
     public function testGetCount()
     {
         $this->storage->driver(new class() implements StorageDriverInterface
@@ -66,8 +85,7 @@ class IPStorageTest extends TestCase
 
         $result = $this->storage->getCount('192.168.1.1');
 
-
-        $this->assertInternalType(IsType::TYPE_INT, $result);
+        $this->assertInternalType(IsType::TYPE_ARRAY, $result);
     }
 
     protected function tearDown()
