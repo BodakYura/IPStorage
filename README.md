@@ -10,8 +10,10 @@ PSRs you support to avoid any confusion with users and contributors.
 Via Composer
 
 ``` bash
-$ composer require BodakYura/ipstorege
+$ composer require bodakyuriy/ipstorage
 ```
+
+## Documentation
 
 #
 ## License

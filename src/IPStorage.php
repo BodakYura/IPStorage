@@ -31,9 +31,9 @@ class IPStorage implements IPStorageInterface
 
     /**
      * @param StorageDriverInterface $storageDriver
-     * @return IPStorage
+     * @return IPStorageInterface
      */
-    public function driver(StorageDriverInterface $storageDriver): self
+    public function driver(StorageDriverInterface $storageDriver): IPStorageInterface
     {
         $this->driver = $storageDriver;
 
@@ -42,9 +42,9 @@ class IPStorage implements IPStorageInterface
 
     /**
      * @param ValidatorInterface $validator
-     * @return IPStorage
+     * @return IPStorageInterface
      */
-    public function validator(ValidatorInterface $validator): self
+    public function validator(ValidatorInterface $validator): IPStorageInterface
     {
         $this->validator = $validator;
 
