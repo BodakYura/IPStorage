@@ -23,7 +23,7 @@
     },
     "autoload": {
         "psr-4": {
-            "IPStorage\\": ""
+            "IPStorage\\": "src/"
         }
     },
     "autoload-dev": {
@@ -31,5 +31,5 @@
             "IPStorage\\Test\\": "tests/"
         }
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "dev-develop"
 }
