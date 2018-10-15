@@ -9,6 +9,7 @@ use IPStorage\Validator\ValidatorInterface;
 /**
  * Class IPStorage
  * @package IPStorage
+ * @link https://github.com/BodakYura/IPStorage Documentation of IPStorage.
  */
 class IPStorage implements IPStorageInterface
 {
