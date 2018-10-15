@@ -19,7 +19,7 @@ interface IPStorageInterface
 
     /**
      * @param string $ip
-     * @return int
+     * @return array
      */
     public function getCount(string $ip): array;
 
