@@ -61,7 +61,7 @@ class PDODriver implements StorageDriverInterface
         $stmt->execute();
         $result = $stmt->fetch(\PDO::FETCH_ASSOC);
 
-        return $result['count'];
+        return (int)$result['count'];
     }
 
     /**
