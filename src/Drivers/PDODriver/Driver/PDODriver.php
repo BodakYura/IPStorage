@@ -21,11 +21,11 @@ class PDODriver implements StorageDriverInterface
 
     /**
      * PDODriver constructor.
-     * @param $dsn
-     * @param null $username
-     * @param null $passwd
+     * @param string $dsn
+     * @param string|null $username
+     * @param string|null $passwd
      */
-    public function __construct($dsn, $username = null, $passwd = null)
+    public function __construct(string $dsn, string $username = null, string $passwd = null)
     {
         $this->connection = new \PDO($dsn, $username, $passwd);
         $this->createIPStoreTable();
