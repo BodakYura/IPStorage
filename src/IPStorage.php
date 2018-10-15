@@ -31,7 +31,7 @@ class IPStorage implements IPStorageInterface
 
     /**
      * @param StorageDriverInterface $storageDriver
-     * @return $this
+     * @return IPStorage
      */
     public function driver(StorageDriverInterface $storageDriver): self
     {
@@ -53,7 +53,7 @@ class IPStorage implements IPStorageInterface
 
     /**
      * @param string $ip
-     * @return array|int
+     * @return array
      */
     public function add(string $ip): array
     {
@@ -61,20 +61,28 @@ class IPStorage implements IPStorageInterface
 
         if (count($errors) === 0) {
             $this->driver->save($ip);
-        } else {
-            return ['errors' => $errors];
+
+            return ['count' => $this->getCount($ip)];
         }
 
-        return ['count' => $this->getCount($ip)];
+        return ['errors' => $errors];
     }
 
     /**
      * @param string $ip
-     * @return int
+     * @return array
      */
-    public function getCount(string $ip): int
+    public function getCount(string $ip): array
     {
-        return $this->driver->getCount($ip);
+        $errors = $this->validator->validate($ip);
+
+        if (count($errors) === 0) {
+             $count = $this->driver->getCount($ip);
+
+            return ['count' => $count];
+        }
+
+        return ['errors' => $errors];
     }
 
 }
