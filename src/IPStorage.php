@@ -18,7 +18,7 @@ class IPStorage implements IPStorageInterface
      */
     private $driver;
     /**
-     * @var Validator
+     * @var ValidatorInterface
      */
     private $validator;
 
